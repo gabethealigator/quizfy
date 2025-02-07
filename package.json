@@ -10,5 +10,8 @@
     "dev:client": "cd client && bun run dev",
     "dev:server": "cd server && bun run dev",
     "dev:all": "concurrently \"bun run dev:client\" \"bun run dev:server\""
+  },
+  "dependencies": {
+    "react-icons": "^5.4.0"
   }
 }

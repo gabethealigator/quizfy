@@ -10,7 +10,7 @@ function Router() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/main" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

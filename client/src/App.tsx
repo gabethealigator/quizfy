@@ -14,7 +14,7 @@ function AuthHandler() {
       if (token) {
         login(token);
         window.location.hash = '';
-        window.location.href = '/main';
+        window.location.href = '/home';
       }
     }
   }, [login]);
