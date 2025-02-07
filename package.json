@@ -7,6 +7,8 @@
     "client/*"
   ],
   "scripts": {
-    "dev:all": ""
+    "dev:client": "cd client && bun run dev",
+    "dev:server": "cd server && bun run dev",
+    "dev:all": "concurrently \"bun run dev:client\" \"bun run dev:server\""
   }
 }

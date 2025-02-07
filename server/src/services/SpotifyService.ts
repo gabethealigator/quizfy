@@ -1,0 +1,20 @@
+import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID as string;
+const SPOTIFY_REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI as string;
+
+export const getAuthUrl = (): string => {
+  const scopes = 'user-read-private user-read-email';
+  return `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=token&redirect_uri=${SPOTIFY_REDIRECT_URI}&scope=${scopes}`;
+};
+
+export const getUserProfile = async (accessToken: string) => {
+  const response = await axios.get('https://api.spotify.com/v1/me', {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  return response.data;
+};
+
