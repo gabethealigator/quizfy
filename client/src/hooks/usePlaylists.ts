@@ -28,7 +28,8 @@ const usePlaylists = () => {
         }
 
         const data = await response.json();
-        setPlaylists(data);
+        console.log('Playlists response from usePlaylists', data)
+        setPlaylists(data.items);
       } catch (error) {
         console.error("Fetching playlists error: ", error);
         setError(error instanceof Error ? error.message : "An error occurred");

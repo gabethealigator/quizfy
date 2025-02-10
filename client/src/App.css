@@ -1,5 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, retro, lofi, luxury;
+}
 @plugin "daisyui/theme" {
   name: "spotify";
   prefersdark: true;
@@ -35,3 +37,15 @@
   --color-error: #ff4d4d;
   --color-error-content: #ffffff;
 }
+
+/* Hide scrollbar but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensures the element is still scrollable */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
