@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+import { SpotifyPlaylist } from "../types/SpotifyTypes";
 
 const usePlaylists = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [playlists, setPlaylists] = useState(null);
+  const [playlists, setPlaylists] = useState<SpotifyPlaylist[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const { token, logout } = useAuth();
 

@@ -1,4 +1,5 @@
 import { FaBars } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 interface NavBarProps {
   profileImageUrl?: string;
@@ -6,6 +7,12 @@ interface NavBarProps {
 }
 
 const NavBar = ({ profileImageUrl }: NavBarProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/home`);
+  };
+
   return (
     <>
       <div className="navbar rounded-sm">
@@ -18,52 +25,58 @@ const NavBar = ({ profileImageUrl }: NavBarProps) => {
         </div>
 
         <div className="navbar-center">
-          <div className="dropdown tooltip tooltip-bottom" data-tip="Change theme">
-            <a tabIndex={0} role="button" className="btn btn-ghost text-xl">
+          <div className="tooltip tooltip-bottom" data-tip="Home">
+            <a
+              role="button"
+              className="btn btn-ghost text-xl"
+              onClick={handleClick}
+            >
               Quizfy
             </a>
-            <ul tabIndex={0} className="dropdown-content bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm">
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Default"
-                  value="default" />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Retro"
-                  value="retro" />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Lofi"
-                  value="lofi" />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Luxury"
-                  value="luxury" />
-              </li>
-            </ul>
+            {/* <ul tabIndex={0} className="dropdown-content bg-base-200 rounded-box z-1 w-52 p-2 shadow-sm"> */}
+            {/*   <li> */}
+            {/*     <input */}
+            {/*       type="radio" */}
+            {/*       name="theme-dropdown" */}
+            {/*       className="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start" */}
+            {/*       aria-label="Default" */}
+            {/*       value="default" /> */}
+            {/*   </li> */}
+            {/*   <li> */}
+            {/*     <input */}
+            {/*       type="radio" */}
+            {/*       name="theme-dropdown" */}
+            {/*       className="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start" */}
+            {/*       aria-label="Retro" */}
+            {/*       value="retro" /> */}
+            {/*   </li> */}
+            {/*   <li> */}
+            {/*     <input */}
+            {/*       type="radio" */}
+            {/*       name="theme-dropdown" */}
+            {/*       className="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start" */}
+            {/*       aria-label="Lofi" */}
+            {/*       value="lofi" /> */}
+            {/*   </li> */}
+            {/*   <li> */}
+            {/*     <input */}
+            {/*       type="radio" */}
+            {/*       name="theme-dropdown" */}
+            {/*       className="theme-controller w-full btn btn-sm btn-block btn-ghost justify-start" */}
+            {/*       aria-label="Luxury" */}
+            {/*       value="luxury" /> */}
+            {/*   </li> */}
+            {/* </ul> */}
           </div>
         </div>
 
         <div className="navbar-end">
           <div className="tooltip tooltip-bottom" data-tip="Profile">
             <div className="avatar w-11">
-              {profileImageUrl && (
+              {profileImageUrl ? (
                 <img className="rounded-full" src={profileImageUrl} alt="" />
+              ) : (
+                <div className="loading loading-xl ml-2" />
               )}
             </div>
           </div>

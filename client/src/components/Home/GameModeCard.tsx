@@ -6,7 +6,7 @@ interface GameModeCardProps {
   buttonText: string;
   imageSrc: string;
   imageAlt?: string;
-  navigateTo?: string;
+  route: string;
 }
 
 const GameModeCard = ({
@@ -15,30 +15,28 @@ const GameModeCard = ({
   buttonText,
   imageSrc,
   imageAlt,
-  navigateTo,
+  route,
 }: GameModeCardProps) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (navigateTo) {
-      navigate(navigateTo);
-    }
-  };
-
   return (
-    <div className="card bg-base-100 shadow-xl mb-10">
-      <figure className="px-4 pt-4">
+    <div className="card bg-base-200 shadow-xl">
+      <figure className="px-3 pt-3 sm:px-6 sm:pt-6">
         <img
           src={imageSrc}
           alt={imageAlt || title}
-          className="rounded-xl w-full h-64 object-cover object-top"
+          className="rounded-xl w-full h-48 sm:h-64 object-cover object-center"
+          loading="lazy"
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{title}</h2>
-        <p>{description}</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={handleClick}>
+      <div className="card-body gap-3">
+        <h2 className="card-title text-xl sm:text-2xl">{title}</h2>
+        <p className="text-base-content/80">{description}</p>
+        <div className="card-actions justify-end mt-2">
+          <button
+            className="btn btn-primary w-full sm:w-auto"
+            onClick={() => navigate(route)}
+          >
             {buttonText}
           </button>
         </div>
