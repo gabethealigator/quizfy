@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { SpotifyPlaylist } from "../types/SpotifyTypes";
+import { api } from '../utils/api';
 
 const usePlaylists = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,21 +15,11 @@ const usePlaylists = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch("/api/v1/spotify/playlists", {
+        const data = await api.get('/api/v1/spotify/playlists', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            logout();
-            throw new Error("Session expired. Please login again.");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
         console.log('Playlists response from usePlaylists', data)
         setPlaylists(data.items);
       } catch (error) {

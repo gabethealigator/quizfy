@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { api } from "../../utils/api";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,8 +9,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/v1/spotify/auth");
-      const data = await response.json();
+      const data = await api.get('/api/v1/spotify/auth');
       window.location.href = data.url;
     } catch (error) {
       console.error("Authentication error:", error);

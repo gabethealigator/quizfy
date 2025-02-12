@@ -1,31 +1,29 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-export default defineConfig(() => ({
-  plugins: [
-    react(),
-    tailwindcss()
-  ],
-  server: {
-    proxy: {
-      "/api": {
-        target: "https://tracktryvia-api.vercel.app",
-        changeOrigin: true
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+
+  return {
+    plugins: [
+      react(),
+      tailwindcss()
+    ],
+    server: {
+      proxy: {
+        "/api": env.VITE_API_URL || "http://localhost:5000"
       }
-    }
-  },
-  preview: {
-    proxy: {
-      "/api": {
-        target: "https://tracktryvia-api.vercel.app",
-        changeOrigin: true
+    },
+    preview: {
+      proxy: {
+        "/api": env.VITE_API_URL || "http://localhost:5000"
       }
+    },
+    build: {
+      outDir: 'dist',
+      sourcemap: true
     }
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: true
   }
-}))
+})
 

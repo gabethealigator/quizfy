@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
+import { api } from '../utils/api';
 
 const useProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,21 +14,11 @@ const useProfile = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch("/api/v1/spotify/profile", {
+        const data = await api.get('/api/v1/spotify/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            logout();
-            throw new Error("Session expired. Please login again.");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
         setProfile(data);
       } catch (error) {
         console.error("Fetching user profile error: ", error);
