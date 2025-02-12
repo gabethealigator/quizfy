@@ -1,12 +1,12 @@
 import express from 'express';
-import spotify from './spotify'
+import spotify from './spotify';
 import MessageResponse from '../interfaces/MessageResponse';
 
 const router = express.Router();
 
-router.get<{}, MessageResponse>('/', (_req, res) => {
+router.get<{}, MessageResponse>('/health', (_req, res) => {
   res.json({
-    message: 'API - 👋🌎🌍🌏',
+    message: 'API IS UP AND RUNNING BOOOOOYS',
   });
 });
 
