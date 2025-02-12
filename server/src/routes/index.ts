@@ -1,5 +1,5 @@
 import { Router } from "express";
-import spotifyRoutes from "./spotify.routes";
+import spotifyRoutes from "./spotify.routes.js";
 
 const router = Router();
 

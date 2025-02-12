@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import * as SpotifyService from "../services/SpotifyService";
+import * as SpotifyService from "../services/SpotifyService.js";
 import axios from "axios";
 
 export const getAuthUrl = (req: Request, res: Response) => {

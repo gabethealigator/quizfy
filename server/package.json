@@ -31,8 +31,11 @@
   },
   "scripts": {
     "dev": "bun run src/server.ts",
-    "build": "bun build src/server.ts --outdir dist",
-    "start": "bun run dist/server.js",
-    "test": "jest"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "vercel-build": "tsc"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
