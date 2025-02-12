@@ -8,6 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api', routes);
-app.use(errorHandler);
+app.use(errorHandler as express.ErrorRequestHandler);
 
 export default app;
