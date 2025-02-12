@@ -8,7 +8,8 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/v1/spotify/auth");
+      const api_url = process.env.VITE_API_URL;
+      const response = await fetch(`${api_url}/api/v1/spotify/auth`);
       const data = await response.json();
       window.location.href = data.url;
     } catch (error) {
