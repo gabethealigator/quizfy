@@ -1,38 +1,35 @@
-import { useEffect } from "react";
-import "./App.css";
-import Router from "./routes/Router";
-import { AuthProvider, useAuth } from "./context/AuthContext";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { useEffect } from 'react'
+import './App.css'
+import Router from './routes/Router';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
 function AuthHandler() {
   const { login } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
       const params = new URLSearchParams(hash.substring(1));
-      const token = params.get("access_token");
+      const token = params.get('access_token');
       if (token) {
         login(token);
-        window.location.hash = "";
-        navigate("/home");
+        window.location.hash = '';
+        window.location.href = '/home';
       }
     }
-  }, [login, navigate]);
+  }, [login]);
 
   return null;
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AuthHandler />
-        <Router />
-      </AuthProvider>
-    </BrowserRouter>
+    <AuthProvider>
+      <AuthHandler />
+      <Router />
+    </AuthProvider>
   );
 }
 
-export default App;
+export default App
+
