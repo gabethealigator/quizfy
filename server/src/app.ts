@@ -1,13 +1,30 @@
-import express from "express";
-import cors from "cors";
-import routes from "./routes/index.js";
-import { errorHandler } from "./middleware/errorHandler.js";
+import express from 'express';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import cors from 'cors';
+
+import * as middlewares from './middlewares';
+import api from './api';
+import MessageResponse from './interfaces/MessageResponse';
+
+require('dotenv').config();
 
 const app = express();
 
+app.use(morgan('dev'));
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.use('/api', routes);
-app.use(errorHandler);
+
+app.get<{}, MessageResponse>('/', (req, res) => {
+  res.json({
+    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+  });
+});
+
+app.use('/api/v1', api);
+
+app.use(middlewares.notFound);
+app.use(middlewares.errorHandler);
 
 export default app;
