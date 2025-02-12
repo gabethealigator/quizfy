@@ -33,7 +33,7 @@
     "dev": "bun run src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "vercel-build": "tsc"
+    "vercel-build": "echo hello vercel"
   },
   "engines": {
     "node": ">=18.0.0"
