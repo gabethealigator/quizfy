@@ -13,7 +13,7 @@ const useProfile = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch("/api/spotify/profile", {
+        const response = await fetch("/api/v1/spotify/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

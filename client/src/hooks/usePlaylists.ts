@@ -14,7 +14,7 @@ const usePlaylists = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch("/api/spotify/playlists", {
+        const response = await fetch("/api/v1/spotify/playlists", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
