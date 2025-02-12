@@ -10,7 +10,11 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      "/api": "http://localhost:5000"
+      "/api": process.env.VITE_API_URL || "http://localhost:5000"
     }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: true
   }
 })
