@@ -15,7 +15,7 @@ const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? 'https://your-production-client-domain.com'
     : 'http://localhost:5173',
-  credentials: true
+  credentials: true,
 };
 
 app.use(morgan('dev'));
