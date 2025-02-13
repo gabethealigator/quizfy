@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import './App.css'
 import Router from './routes/Router';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { useNavigate, BrowserRouter } from 'react-router-dom';
 
 function AuthHandler() {
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -14,20 +16,22 @@ function AuthHandler() {
       if (token) {
         login(token);
         window.location.hash = '';
-        window.location.href = '/home';
+        navigate('/home');
       }
     }
-  }, [login]);
+  }, [login, navigate]);
 
   return null;
 }
 
 function App() {
   return (
-    <AuthProvider>
-      <AuthHandler />
-      <Router />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <AuthHandler />
+        <Router />
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

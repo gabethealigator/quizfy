@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => {
       tailwindcss()
     ],
     server: {
-      historyApiFallback: true,
       proxy: {
         "/api": env.VITE_API_URL || "http://localhost:5000"
       }
