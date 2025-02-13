@@ -21,7 +21,6 @@ function GameSetup() {
     setPlayers([...players, { id: newId, name: `Player ${newId}` }]);
   };
 
-
   const removePlayer = (id: number) => {
     if (players.length <= 1) return;
     const updatedPlayers = players
@@ -41,106 +40,66 @@ function GameSetup() {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto sm:px-6">
-      {/*Difficulty selector section*/}
+    <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto">
+      {/* Difficulty selector section */}
       <div className="card bg-base-200 shadow-xl">
-        <div className="card-body p-4 sm:p-6">
-          <h2 className="card-title text-xl sm:text-2xl mb-4">
+        <div className="card-body">
+          <h2 className="card-title text-xl sm:text-2xl text-base-content">
             Difficulty
           </h2>
-          <div className="bg-base-100 w-full flex flex-col sm:flex-row gap-5 p-4 sm:p-5 rounded-lg">
-            <div className="join join-vertical sm:py-2">
-              <input
-                className="join-item btn btn-soft btn-sm sm:btn-md"
-                type="radio"
-                name="options"
-                aria-label="Easy"
-                checked={difficulty === 'Easy'}
-                onChange={() => setDifficulty('Easy')}
-              />
-              <input className="join-item btn btn-soft btn-sm sm:btn-md"
-                type="radio"
-                name="options"
-                aria-label="Normal"
-                checked={difficulty === 'Normal'}
-                onChange={() => setDifficulty('Normal')}
-              />
-              <input className="join-item btn btn-soft btn-sm sm:btn-md"
-                type="radio"
-                name="options"
-                aria-label="Medium"
-                checked={difficulty === 'Medium'}
-                onChange={() => setDifficulty('Medium')}
-              />
-              <input
-                className="join-item btn btn-soft btn-sm sm:btn-md"
-                type="radio"
-                name="options"
-                aria-label="Hard"
-                checked={difficulty === 'Hard'}
-                onChange={() => setDifficulty('Hard')}
-              />
-              <input
-                className="join-item btn btn-soft btn-sm sm:btn-md"
-                type="radio"
-                name="options"
-                aria-label="Insane"
-                checked={difficulty === 'Insane'}
-                onChange={() => setDifficulty('Insane')}
-              />
+          <div className="bg-base-100 rounded-box p-4 sm:p-6 flex flex-col gap-6">
+            <div className="join join-vertical">
+              {(['Easy', 'Normal', 'Medium', 'Hard', 'Insane'] as Difficulty[]).map((level) => (
+                <input
+                  key={level}
+                  className="join-item btn btn-sm sm:btn-md"
+                  type="radio"
+                  name="difficulty"
+                  aria-label={level}
+                  checked={difficulty === level}
+                  onChange={() => setDifficulty(level)}
+                />
+              ))}
             </div>
-            <div className="flex flex-col ml-1 gap-3 sm:gap-4 justify-center text-sm sm:text-base text-base-content/80">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-success rounded-full"></div>
-                <span>1min music snippet</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-info rounded-full"></div>
-                <span>30s music snippet</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-warning rounded-full"></div>
-                <span>15s music snippet</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-error rounded-full"></div>
-                <span>5s music snippet</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span>1s music snippet</span>
-              </div>
+            <div className="flex flex-col gap-4 mx-1 justify-center text-sm sm:text-base text-base-content/70 ">
+              <DifficultyIndicator color="success" text="1min music snippet" />
+              <DifficultyIndicator color="info" text="30s music snippet" />
+              <DifficultyIndicator color="warning" text="15s music snippet" />
+              <DifficultyIndicator color="error" text="5s music snippet" />
+              <DifficultyIndicator color="purple-800" text="1s music snippet" />
             </div>
           </div>
         </div>
-
       </div>
-      {/*Players section*/}
+
+      {/* Players section */}
       <div className="card bg-base-200 shadow-xl">
-        <div className="card-body p-4 sm:p-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-4">
-            <h2 className="card-title text-xl sm:text-2xl">Players</h2>
-            <div className="badge badge-primary badge-lg">{players.length} Players</div>
+        <div className="card-body">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+            <h2 className="card-title text-xl sm:text-2xl text-base-content">Players</h2>
+            <div className="badge badge-primary">{players.length} Players</div>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 mt-4">
             {players.map(player => (
-              <div key={player.id}
-                className="group flex items-center gap-2 bg-base-100 p-3 rounded-lg hover:bg-base-300/50 transition-colors">
-                <div className="btn btn-circle btn-ghost bg-primary/10 pointer-events-none">
-                  <FaUser />
+              <div
+                key={player.id}
+                className="group flex items-center gap-3 bg-base-100 p-4 rounded-box hover:bg-base-300/50 transition-all"
+              >
+                <div className="btn btn-circle btn-ghost btn-sm bg-primary/10">
+                  <FaUser className="text-primary" />
                 </div>
                 <input
                   type="text"
                   value={player.name}
                   onChange={(e) => updatePlayerName(player.id, e.target.value)}
                   placeholder={`Player ${player.id}`}
-                  className="input input-ghost input-sm sm:input-md w-full focus:bg-transparent"
+                  className="input input-ghost w-full focus:bg-transparent text-base-content"
                 />
                 {players.length > 1 && (
                   <button
                     onClick={() => removePlayer(player.id)}
-                    className="btn btn-ghost btn-circle btn-sm sm:btn-md opacity-99 sm:opacity1 sm:group-hover:opacity-100 transition-all hover:bg-red-500/20 text-red-500"
+                    className="btn btn-ghost btn-circle btn-sm opacity-0 group-hover:opacity-100 hover:bg-error/20 text-error transition-all"
                     title="Remove player"
                   >
                     <FaTrash />
@@ -159,11 +118,19 @@ function GameSetup() {
           </div>
         </div>
       </div>
-      <div className='btn btn-block bg-base-300 hover:bg-primary text-base-content mt-10'>
-        Play
-      </div>
+
+      <button className="btn btn-primary btn-lg w-full mt-6">
+        Start Game
+      </button>
     </div>
   );
 }
+
+const DifficultyIndicator = ({ color, text }: { color: string; text: string }) => (
+  <div className="flex items-center gap-2">
+    <div className={`w-2 h-2 rounded-full bg-${color}`} />
+    <span>{text}</span>
+  </div>
+);
 
 export default GameSetup;

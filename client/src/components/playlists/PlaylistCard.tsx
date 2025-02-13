@@ -8,17 +8,17 @@ interface PlaylistCardProps {
 
 const PlaylistCard = ({ playlist, onSelect }: PlaylistCardProps) => {
   return (
-    <li className="group list-row hover:bg-base-200 transition-colors">
+    <li className="group list-row hover:bg-base-200 transition-colors p-4 rounded-box">
       <div className="shrink-0">
         <img 
-          className="h-16 w-16 sm:h-20 sm:w-20 rounded-md shadow-md" 
+          className="h-16 w-16 sm:h-20 sm:w-20 rounded-box shadow-lg" 
           src={playlist?.images?.[0]?.url}
           alt={playlist.name}
           loading="lazy"
         />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-base sm:text-lg mb-1 truncate">
+        <div className="text-base sm:text-lg mb-1 truncate text-base-content">
           {playlist.name}
         </div>
         <div className="text-xs sm:text-sm font-medium text-base-content/60">
@@ -28,7 +28,7 @@ const PlaylistCard = ({ playlist, onSelect }: PlaylistCardProps) => {
       <div className="shrink-0">
         <button
           onClick={() => onSelect(playlist.id)}
-          className="btn btn-circle btn-primary btn-sm sm:btn-md sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+          className="btn btn-circle btn-primary btn-sm sm:btn-md opacity-0 group-hover:opacity-100 transition-all"
           title="Select playlist"
         >
           <FaPlay/>

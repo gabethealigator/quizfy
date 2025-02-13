@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-base-100 flex flex-col items-center justify-center p-4">
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-4">Welcome to Quizfy</h1>
+        <h1 className="text-5xl font-bold mb-4 text-base-content">Welcome to Quizfy</h1>
         <p className="text-xl text-base-content/70">
           Test your music knowledge with friends
         </p>
@@ -35,7 +35,7 @@ const Login = () => {
 
       <div className="card w-full max-w-md bg-base-200 shadow-xl">
         <div className="card-body items-center text-center">
-          <h2 className="card-title text-2xl mb-4">Get Started</h2>
+          <h2 className="card-title text-2xl mb-4 text-base-content">Get Started</h2>
           <p className="mb-6 text-base-content/70">
             Connect with your Spotify account to access your playlists and start playing
           </p>
