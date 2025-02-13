@@ -1,41 +1,36 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, retro, lofi, luxury;
-}
-@plugin "daisyui/theme" {
-  name: "spotify";
-  prefersdark: true;
-  color-scheme: dark;
-
-  /* Base colors */
-  --color-base-100: #121212;   /* Fundo principal */
-  --color-base-200: #212121;   /* Fundo secundário */
-  --color-base-300: #535353;   /* Cor intermediária */
-  --color-base-content: #b3b3b3; /* Texto principal */
-
-  /* Primary color (Spotify Green) */
-  --color-primary: #1db954;
-  --color-primary-content: #ffffff; /* Texto sobre botões verdes */
-
-  /* Secondary & Accent */
-  --color-secondary: #b3b3b3; 
-  --color-secondary-content: #121212;
-  --color-accent: #535353;
-  --color-accent-content: #ffffff;
-
-  /* Neutral colors */
-  --color-neutral: #212121;
-  --color-neutral-content: #b3b3b3;
-
-  /* Informações e status */
-  --color-info: #1db954;
-  --color-info-content: #ffffff;
-  --color-success: #1db954;
-  --color-success-content: #ffffff;
-  --color-warning: #b3b3b3;
-  --color-warning-content: #212121;
-  --color-error: #ff4d4d;
-  --color-error-content: #ffffff;
+  themes: [
+    light,
+    dark,
+    cupcake,
+    bumblebee,
+    emerald,
+    corporate,
+    synthwave,
+    retro,
+    cyberpunk,
+    valentine,
+    halloween,
+    garden,
+    forest,
+    aqua,
+    lofi,
+    pastel,
+    fantasy,
+    wireframe,
+    black,
+    luxury,
+    dracula,
+    cmyk,
+    autumn,
+    business,
+    acid,
+    lemonade,
+    night,
+    coffee,
+    winter
+  ];
 }
 
 /* Hide scrollbar but allow scrolling */

@@ -1,4 +1,4 @@
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaPalette } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '../../hooks/useTheme';
 
@@ -15,33 +15,20 @@ const NavBar = ({ profileImageUrl }: NavBarProps) => {
   };
 
   const themes = [
-    { name: 'spotify', label: 'Spotify' },
-    { name: 'dark', label: 'Dark' },
-    { name: 'light', label: 'Light' },
-    { name: 'retro', label: 'Retro' },
-    { name: 'luxury', label: 'Luxury' }
+    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 
+    'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 
+    'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 
+    'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 
+    'business', 'acid', 'lemonade', 'night', 'coffee', 'winter'
   ];
 
   return (
     <div className="navbar rounded-sm">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost text-xl">
+        <div className="tooltip tooltip-bottom" data-tip="Menu">
+          <div className="btn btn-ghost text-xl">
             <FaBars />
           </div>
-          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
-            <li className="menu-title">Theme</li>
-            {themes.map((t) => (
-              <li key={t.name}>
-                <button
-                  className={`${theme === t.name ? 'active' : ''}`}
-                  onClick={() => setTheme(t.name)}
-                >
-                  {t.label}
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
 
@@ -57,7 +44,25 @@ const NavBar = ({ profileImageUrl }: NavBarProps) => {
         </div>
       </div>
 
-      <div className="navbar-end">
+      <div className="navbar-end gap-2">
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost" data-tip="Theme">
+            <FaPalette className="text-xl" />
+          </div>
+          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52 max-h-96 overflow-y-auto">
+            {themes.map((t) => (
+              <li key={t}>
+                <button
+                  className={`${theme === t ? 'active' : ''}`}
+                  onClick={() => setTheme(t)}
+                >
+                  {t.charAt(0).toUpperCase() + t.slice(1)}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="tooltip tooltip-bottom" data-tip="Profile">
           <div className="avatar w-11">
             {profileImageUrl ? (
