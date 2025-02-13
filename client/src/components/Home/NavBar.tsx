@@ -49,11 +49,13 @@ const NavBar = ({ profileImageUrl }: NavBarProps) => {
           <div tabIndex={0} role="button" className="btn btn-ghost" data-tip="Theme">
             <FaPalette className="text-xl" />
           </div>
-          <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52 max-h-96 overflow-y-auto">
+          <ul tabIndex={0} className="dropdown-content z-[1] p-0 shadow bg-base-200 rounded-box w-52 max-h-[60vh] overflow-y-auto">
             {themes.map((t) => (
               <li key={t}>
                 <button
-                  className={`${theme === t ? 'active' : ''}`}
+                  className={`w-full px-4 py-3 text-left hover:bg-base-300 transition-colors ${
+                    theme === t ? 'bg-primary/10 text-primary' : ''
+                  }`}
                   onClick={() => setTheme(t)}
                 >
                   {t.charAt(0).toUpperCase() + t.slice(1)}
