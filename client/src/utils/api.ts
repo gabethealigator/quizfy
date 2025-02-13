@@ -1,7 +1,7 @@
 const getApiUrl = (path: string): string => {
   const baseUrl = import.meta.env.PROD
     ? 'https://tracktryvia-api.vercel.app'
-    : 'http://localhost:5000';
+    : '';
   return `${baseUrl}${path}`;
 };
 
