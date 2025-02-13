@@ -159,7 +159,7 @@ function GameSetup() {
           </div>
         </div>
       </div>
-      <div className='btn btn-block bg-base-300 hover:bg-primary text-primary-content mt-10'>
+      <div className='btn btn-block bg-base-300 hover:bg-primary text-base-content mt-10'>
         Play
       </div>
     </div>

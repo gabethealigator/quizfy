@@ -11,16 +11,9 @@ require('dotenv').config();
 
 const app = express();
 
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://your-production-client-domain.com'
-    : 'http://localhost:5173',
-  credentials: true,
-};
-
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
