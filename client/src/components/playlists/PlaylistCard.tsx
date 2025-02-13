@@ -28,7 +28,7 @@ const PlaylistCard = ({ playlist, onSelect }: PlaylistCardProps) => {
       <div className="shrink-0">
         <button
           onClick={() => onSelect(playlist.id)}
-          className="btn btn-circle btn-primary btn-sm sm:btn-md opacity-0 group-hover:opacity-100 transition-all"
+          className="btn btn-circle btn-primary btn-sm sm:btn-md md:opacity-0 opacity-100 group-hover:opacity-100 transition-all"
           title="Select playlist"
         >
           <FaPlay/>

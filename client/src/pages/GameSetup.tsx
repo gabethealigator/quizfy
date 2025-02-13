@@ -126,11 +126,21 @@ function GameSetup() {
   );
 }
 
-const DifficultyIndicator = ({ color, text }: { color: string; text: string }) => (
-  <div className="flex items-center gap-2">
-    <div className={`w-2 h-2 rounded-full bg-${color}`} />
-    <span>{text}</span>
-  </div>
-);
+const DifficultyIndicator = ({ color, text }: { color: string; text: string }) => {
+  const colorClasses = {
+    'success': 'bg-success',
+    'info': 'bg-info',
+    'warning': 'bg-warning',
+    'error': 'bg-error',
+    'purple-800': 'bg-purple-800'
+  };
+
+  return (
+    <div className="flex items-center gap-2">
+      <div className={`w-2 h-2 rounded-full ${colorClasses[color as keyof typeof colorClasses]}`} />
+      <span>{text}</span>
+    </div>
+  );
+};
 
 export default GameSetup;
