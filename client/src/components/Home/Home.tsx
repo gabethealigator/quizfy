@@ -7,7 +7,7 @@ const Home = () => {
         title="Versus Local"
         description="Pass and play with as many friends as you want"
         buttonText="Play"
-        imageSrc="./src/assets/versus_local.png"
+        imageSrc="/versus_local.png"
         imageAlt="Versus Local"
         route="/versus-local"
       />
@@ -16,7 +16,7 @@ const Home = () => {
         title="Online Mode"
         description="Play with friends online"
         buttonText="Play"
-        imageSrc="./src/assets/online.png"
+        imageSrc="/online.png"
         imageAlt="Online Mode"
         route="/online"
       />
